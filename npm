@@ -1,0 +1,1 @@
+PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;%NVM_HOME%;%NVM_SYMLINK%;D:\Program Files\Git\cmd;C:\Users\tusha\AppData\Local\Microsoft\WindowsApps;C:\Users\tusha\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\tusha\AppData\Local\Programs\Microsoft VS Code\bin  start\PATH.txt
