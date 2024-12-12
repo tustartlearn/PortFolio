@@ -11,7 +11,7 @@ function Navbar() {
           
           marginBottom:{xs:'0px',md:'0',lg:'5px'},
           backgroundColor: '#ffffff', 
-          marginLeft:{xs:'20px',md:'0',lg:'7px'},
+          marginLeft:{xs:'30px',md:'20px',lg:'7px'},
           marginTop:'5px' 
         }}
       >

@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Box, Tabs, Tab, Typography, CardMedia, IconButton, Drawer, useMediaQuery, useTheme } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import Bars from './bars-solid (1).svg' 
-import Ques from './question-solid (2).svg' 
-import Student from './user-regular (1).svg' 
-import Download from './download-solid (1).svg'
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Box,
+  Tabs,
+  Tab,
+  Typography,
+  CardMedia,
+  IconButton,
+  Drawer,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import Bars from "./bars-solid (4).svg";
+import Ques from "./question-solid (5).svg";
+import Student from "./user-regular (4).svg";
+import Download from "./download-solid (4).svg";
+import Bars2 from "./bars-solid (5).svg";
+import Ques2 from "./question-solid (6).svg";
+import Student2 from "./user-regular (5).svg";
+import download2 from "./download-solid (5).svg";
 
 const SideNavbar = () => {
   const location = useLocation();
-  const [activePage, setActivePage] = useState('/' + location.pathname.split('/')[1]);
+  const [activePage, setActivePage] = useState(
+    "/" + location.pathname.split("/")[1]
+  );
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleTabClick = (_, page) => {
     setActivePage(page);
@@ -26,10 +42,15 @@ const SideNavbar = () => {
   };
 
   const menuItems = [
-    { path: '/dashboard', icon1: Bars, text: 'Topicwise' },
-    { path: '/StudentWise', icon1: Student, text: 'Studentwise' },
-    { path: '/take-test', icon1: Ques, text: 'Questionwise' },
-    { path: '/plan-test', icon1: Download, text: 'Download' },
+    { path: "/dashboard", icon1: Bars, icon2: Bars2, text: "Topicwise" },
+    {
+      path: "/StudentWise",
+      icon1: Student,
+      icon2: Student2,
+      text: "Studentwise",
+    },
+    { path: "/take-test", icon1: Ques, icon2: Ques2, text: "Questionwise" },
+    { path: "/plan-test", icon1: Download, icon2: download2, text: "Download" },
   ];
 
   return (
@@ -38,10 +59,12 @@ const SideNavbar = () => {
       {(isTablet || isMobile) && (
         <IconButton
           sx={{
-            position: 'fixed',
-            top: '10px',
-            left: '10px',
-            zIndex: 1300,
+            position: "absolute",
+            top: "10px",
+            left: "10px",
+            zIndex: 1300,  
+            marginRight:'15px'
+
           }}
           onClick={toggleDrawer}
         >
@@ -53,26 +76,26 @@ const SideNavbar = () => {
       {!isTablet && !isMobile && (
         <Box
           sx={{
-            width: '250px',
-            height: '60vh',
-            backgroundColor: '#fff',
-            borderRadius: '8px',
-            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-            padding: '1rem 0',
-            overflowY: 'auto', 
-            marginLeft:'20px', 
-            marginTop:'20px'
+            width: "250px",
+            height: "60vh",
+            backgroundColor: "#fff",
+            borderRadius: "8px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+            padding: "1rem 0",
+            overflowY: "auto",
+            marginLeft: "20px",
+            marginTop: "20px",
           }}
         >
           <Typography
             sx={{
-              textAlign: 'center',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-              color: '#168884',
-              padding: '10px 0',
-              borderBottom: '1px solid #e0e0e0',
-              marginBottom: '1rem',
+              textAlign: "center",
+              fontSize: "1.2rem",
+              fontWeight: "bold",
+              color: "#000",
+              padding: "10px 0",
+              borderBottom: "1px solid #e0e0e0",
+              marginBottom: "1rem",
             }}
           >
             Test Report
@@ -85,9 +108,9 @@ const SideNavbar = () => {
             onChange={handleTabClick}
             sx={{
               padding: 0,
-              '& .MuiTabs-flexContainer': {
-                alignItems: 'flex-start',
-                width: '100%',
+              "& .MuiTabs-flexContainer": {
+                alignItems: "flex-start",
+                width: "100%",
               },
             }}
           >
@@ -100,24 +123,26 @@ const SideNavbar = () => {
                     alignItems="center"
                     gap={1.5}
                     sx={{
-                      padding: '0.8rem 1rem',
-                      justifyContent: 'flex-start',
-                      width: '100%',
+                      padding: "0.8rem 1rem",
+                      justifyContent: "flex-start",
+                      width: "100%",
                     }}
                   >
                     <CardMedia
                       component="img"
                       height="24"
-                      image={item.icon1}
+                      image={activePage === item.path ? item.icon1 : item.icon2} // Conditional logic for icon
                       alt={`${item.text} Icon`}
-                      sx={{ width: '24px', objectFit: 'contain' }}
+                      sx={{ width: "24px", objectFit: "contain" }}
                     />
+
                     <Typography
                       sx={{
-                        color: activePage === item.path ? '#168884' : '#10c5bf',
-                        fontWeight: activePage === item.path ? 'bold' : 'normal',
-                        fontSize: isMobile ? '0.9rem' : '1rem', // Smaller text on mobile
-                        whiteSpace: 'nowrap',
+                        color: activePage === item.path ? "#08C2FF" : "#000",
+                        fontWeight:
+                          activePage === item.path ? "bold" : "bold",
+                        fontSize: isMobile ? "0.9rem" : "1rem", // Smaller text on mobile
+                        whiteSpace: "nowrap",
                       }}
                     >
                       {item.text}
@@ -128,15 +153,15 @@ const SideNavbar = () => {
                 component={Link}
                 to={item.path}
                 sx={{
-                  textAlign: 'left',
-                  width: '100%',
-                  '&.Mui-selected': {
-                    backgroundColor: '#eaf3fd',
-                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-                    borderRadius: '3px',
+                  textAlign: "left",
+                  width: "100%",
+                  "&.Mui-selected": {
+                    backgroundColor: "#eaf3fd",
+                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                    borderRadius: "3px",
                   },
-                  '&:hover': {
-                    backgroundColor: '#f0faff',
+                  "&:hover": {
+                    backgroundColor: "#f0faff",
                   },
                 }}
               />
@@ -151,22 +176,22 @@ const SideNavbar = () => {
         open={isDrawerOpen}
         onClose={toggleDrawer}
         sx={{
-          '& .MuiDrawer-paper': {
-            width: '250px',
-            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+          "& .MuiDrawer-paper": {
+            width: "250px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
           },
         }}
       >
-        <Box sx={{ width: '100%', padding: '1rem 0' }}>
+        <Box sx={{ width: "100%", padding: "1rem 0" }}>
           <Typography
             sx={{
-              textAlign: 'center',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-              color: '#168884',
-              borderBottom: '1px solid #e0e0e0',
-              paddingBottom: '10px',
-              marginBottom: '1rem',
+              textAlign: "center",
+              fontSize: "1.2rem",
+              fontWeight: "bold",
+              color: "#168884",
+              borderBottom: "1px solid #e0e0e0",
+              paddingBottom: "10px",
+              marginBottom: "1rem",
             }}
           >
             Test Report
@@ -177,9 +202,9 @@ const SideNavbar = () => {
             value={activePage}
             onChange={handleTabClick}
             sx={{
-              '& .MuiTab-root': {
-                padding: isMobile ? '0.5rem 1rem' : '0.8rem 1rem', // Compact padding on mobile
-                fontSize: isMobile ? '0.9rem' : '1rem', // Smaller font on mobile
+              "& .MuiTab-root": {
+                padding: isMobile ? "0.5rem 1rem" : "0.8rem 1rem", // Compact padding on mobile
+                fontSize: isMobile ? "0.9rem" : "1rem", // Smaller font on mobile
               },
             }}
           >
@@ -192,16 +217,19 @@ const SideNavbar = () => {
                     alignItems="center"
                     gap={isMobile ? 1 : 1.5} // Adjust spacing
                     sx={{
-                      justifyContent: 'flex-start',
-                      width: '100%',
+                      justifyContent: "flex-start",
+                      width: "100%",
                     }}
                   >
                     <CardMedia
                       component="img"
-                      height={isMobile ? '20' : '24'} // Adjust icon size
+                      height={isMobile ? "20" : "24"} // Adjust icon size
                       image={item.icon1}
                       alt={`${item.text} Icon`}
-                      sx={{ width: isMobile ? '20px' : '24px', objectFit: 'contain' }}
+                      sx={{
+                        width: isMobile ? "20px" : "24px",
+                        objectFit: "contain",
+                      }}
                     />
                     {item.text}
                   </Box>
