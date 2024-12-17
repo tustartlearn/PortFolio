@@ -203,8 +203,8 @@ const SideNavbar = () => {
             onChange={handleTabClick}
             sx={{
               "& .MuiTab-root": {
-                padding: isMobile ? "0.5rem 1rem" : "0.8rem 1rem", // Compact padding on mobile
-                fontSize: isMobile ? "0.9rem" : "1rem", // Smaller font on mobile
+                padding: isMobile ? "0.5rem 1rem" : "0.8rem 1rem", 
+                fontSize: isMobile ? "0.9rem" : "1rem", 
               },
             }}
           >
