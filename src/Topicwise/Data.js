@@ -8,12 +8,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
-// Function to create data rows
+
 function createData(id, topic, a, b, c, d, e, avgScore) {
   return { id, topic, a, b, c, d, e, avgScore };
 }
 
-// Rows of data
+
 const rows = [
   createData(1, "Multiplication of 2-digit by 1-digit Numbers", 96, 96, 86, 78, 94, "90%"),
   createData(2, "Word Problems in Multiplication", 50, 36, 28, 32, 45, "38%"),
@@ -81,7 +81,6 @@ export default function TopicwiseAnalysisTable() {
         </TableCell>
       ))}
 
-      {/* Avg Score with dynamic coloring */}
       <TableCell
         align="center"
         sx={{

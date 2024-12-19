@@ -49,8 +49,16 @@ const SideNavbar = () => {
       icon2: Student2,
       text: "Studentwise",
     },
-    { path: "/take-test", icon1: Ques, icon2: Ques2, text: "Questionwise" },
-    { path: "/plan-test", icon1: Download, icon2: download2, text: "Download" },
+    { path: "/take-test",  
+      icon1: Ques, 
+       icon2: Ques2, 
+        text: "Questionwise" 
+       },
+    {  path: "/plan-test",  
+      icon1: Download,  
+      icon2: download2, 
+      text: "Download"  
+    },
   ];
 
   return (

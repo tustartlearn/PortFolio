@@ -7,7 +7,7 @@ export default function Table2() {
   return (
     <Box
       sx={{
-        width: '90%',
+        width: {xs:'99%',md:'100%',lg:'90%'},
         margin: 'auto', // Center horizontally
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
         border: '2px solid #fff',

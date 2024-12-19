@@ -17,7 +17,7 @@ function Breadcrumb() {
     <Box
       sx={{
         height: '50px',
-        width: '95.5%',
+        width: {xs:'100%',md:'100%',lg:'95%'},
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
         border: '2px solid #fff',
         marginLeft: 'auto',

@@ -25,11 +25,10 @@ const Data = () => {
     { id: 13, name: "Draw a brick showing its four faces...", qType: "FIB", correctAnswer: 2, wrongAnswer: 28, qPerformance: "7%" },
     { id: 20, name: "Name any place where you have seen...", qType: "LA", correctAnswer: 1, wrongAnswer: 29, qPerformance: "3%" },
     { id: 5, name: "There are four dates of birth given...", qType: "LA", correctAnswer: 0, wrongAnswer: 30, qPerformance: "0%" }, 
-    // Additional data truncated for brevity...
   ];
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedType, setSelectedType] = useState("All");
+  const [selectedType, setSelectedType] = useState("View All");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -43,7 +42,7 @@ const Data = () => {
   };
 
   const filteredData =
-    selectedType === "All"
+    selectedType === "View All"
       ? tableData
       : tableData.filter((row) => row.qType === selectedType);
 
@@ -71,7 +70,7 @@ const Data = () => {
                   anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                   transformOrigin={{ vertical: "top", horizontal: "left" }}
                 >
-                  <MenuItem onClick={() => handleClose("All")}>All</MenuItem>
+                  <MenuItem onClick={() => handleClose("View All")}>View All</MenuItem>
                   <MenuItem onClick={() => handleClose("MCQ")}>MCQ</MenuItem>
                   <MenuItem onClick={() => handleClose("FIB")}>FIB</MenuItem>
                   <MenuItem onClick={() => handleClose("LA")}>LA</MenuItem>
