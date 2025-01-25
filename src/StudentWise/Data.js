@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Box, Typography, Menu, MenuItem, Button, Card, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Data = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const tableData = [
+    // ... your table data ... 
     { id: 1, name: "Anirudh Sanjeev", adminNo: 6164, rollNo: 7, section: "A", score: 80, percentScore: "100%", timeTaken: "1 Hr 54 Min" },
     { id: 2, name: "Mohammed Umair", adminNo: 6567, rollNo: 1, section: "C", score: 80, percentScore: "100%", timeTaken: "1 Hr 57 Min" },
     { id: 3, name: "Peddineni Bavitha", adminNo: 3353, rollNo: 4, section: "C", score: 80, percentScore: "100%", timeTaken: "1 Hr 33 Min" },
@@ -33,7 +36,7 @@ const Data = () => {
   ];
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedPercentRange, setSelectedPercentRange] = useState(" View All");
+  const [selectedPercentRange, setSelectedPercentRange] = useState("View All");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -56,15 +59,16 @@ const Data = () => {
           if (selectedPercentRange === "Below 55%") return percent < 55; 
           if (selectedPercentRange === "Below 45%") return percent < 45; 
           if (selectedPercentRange === "Below 35%") return percent < 35;
-
-
           return true;
         });
 
+  const handleRowClick = (id) => {
+    navigate(`/StudentTopice`); // Navigate to /StudentTopic with the student's id
+  };
+
   return (
-    <Box sx={{ mt: 4, px: { xs: 2, sm: 4, md: 8 ,lg:0}, width: "100%" }}>
+    <Box sx={{ mt: 4, px: { xs: 2, sm: 4, md: 8, lg: 0 }, width: "100%" }}>
       <Grid container>
-        {/* Header with Filter */}
         <Grid item xs={12}>
           <Card sx={{ padding: 2, boxShadow: 3 }}>
             <Box
@@ -133,7 +137,6 @@ const Data = () => {
               </Box>
             </Box>
 
-            {/* Table */}
             <Box
               sx={{
                 overflowX: "auto",
@@ -161,7 +164,7 @@ const Data = () => {
                 </thead>
                 <tbody>
                   {filteredData.map((row) => (
-                    <tr key={row.id}>
+                    <tr key={row.id} onClick={() => handleRowClick(row.id)} style={{ cursor: "pointer" }}>
                       <td style={{ padding: "10px", borderBottom: "1px solid #eee" }}>{row.id}</td>
                       <td style={{ padding: "10px", borderBottom: "1px solid #eee" }}>{row.name}</td>
                       <td style={{ padding: "10px", borderBottom: "1px solid #eee" }}>{row.adminNo}</td>

@@ -5,7 +5,8 @@ import Sidebar from './Sidebar';
 import Breadcrumb from './Breadcrumb';
 import Table from './Topicwise/Table';
 import Table1 from './StudentWise/Table1'; 
-import Table2 from './Questionwise/Table2';
+import Table2 from './Questionwise/Table2'; 
+import StudentTopice from './StudentWise/StudentTopice';
 import { Box } from '@mui/material';
 import './App.css';
 
@@ -34,7 +35,7 @@ function AdminPannel() {
               <Route path="/StudentWise" element={<Table1 />} />
               <Route path="/take-test" element={<Table2/>} />
               <Route path="/plan-test" element={<div>Download Content</div>} />
-              
+             <Route path="/StudentTopice" element={<StudentTopice />} />
             </Routes>
           </Box>
         </Box>
