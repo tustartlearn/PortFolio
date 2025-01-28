@@ -27,7 +27,7 @@ export default function DrawerAppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation(); // Get current route
-  const isContactPage = location.pathname === "/contact"; 
+  const isContactPage = location.pathname === "/contact"; // Check if user is on Contact page
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -71,7 +71,7 @@ export default function DrawerAppBar(props: Props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex', position: 'relative' }}> {/* Keep Box relative */}
+    <Box sx={{ display: 'flex', position: 'relative' }}>
       <CssBaseline />
       <AppBar
         component="nav"
@@ -79,16 +79,11 @@ export default function DrawerAppBar(props: Props) {
           backgroundColor: 'transparent',
           boxShadow: 'none',
           color: '#F5EFE7',
-          position: 'relative',  // Set AppBar to relative
+          position: 'relative',
         }}
       >
         <Toolbar sx={{ justifyContent: { xs: "center", sm: "space-between", md: "space-between" } }}>
-          {!isContactPage && (
-            <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ display: { sm: 'none' } }}>
-              <MenuIcon />
-            </IconButton>
-          )}
-
+          {/* Logo always visible */}
           <Typography
             variant="h6"
             component="div"
@@ -103,27 +98,44 @@ export default function DrawerAppBar(props: Props) {
             </RouterLink>
           </Typography>
 
-          {!isContactPage && ( // Hide nav items in desktop view on Contact page
+          {/* Show menu icon only if not on Contact page */}
+          {!isContactPage && (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+
+          {/* Show navigation items only if not on Contact page */}
+          {!isContactPage && (
             <Box sx={{ display: { xs: 'none', sm: 'flex', md: 'flex' }, gap: 2 }}>
               {navItems.map((item) => (
-                <Button
-                  key={item}
-                  component={item === "Contact" ? RouterLink : ScrollLink}
-                  to={item === "Contact" ? "/contact" : item.toLowerCase()}
-                  smooth={item !== "Contact"}
-                  offset={-64}
-                  duration={500}
-                  sx={{ color: '#F5EFE7', fontSize: { sm: '0.9rem', md: '1rem' } }}
-                >
-                  {item}
-                </Button>
+                item !== "Contact" && ( // Skip "Contact" link here
+                  <Button
+                    key={item}
+                    component={item === "Contact" ? RouterLink : ScrollLink}
+                    to={item === "Contact" ? "/contact" : item.toLowerCase()}
+                    smooth={item !== "Contact"}
+                    offset={-64}
+                    duration={500}
+                    sx={{ color: '#F5EFE7', fontSize: { sm: '0.9rem', md: '1rem' } }}
+                  >
+                    {item}
+                  </Button>
+                )
               ))}
             </Box>
           )}
         </Toolbar>
       </AppBar>
 
-      {!isContactPage && ( // Hide drawer in Contact page
+      {/* Hide drawer completely on Contact page */}
+      {!isContactPage && (
         <nav>
           <Drawer
             container={container}

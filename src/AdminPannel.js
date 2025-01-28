@@ -1,47 +1,55 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
-import Breadcrumb from './Breadcrumb';
-import Table from './Topicwise/Table';
-import Table1 from './StudentWise/Table1'; 
-import Table2 from './Questionwise/Table2'; 
-import StudentTopice from './StudentWise/StudentTopice';
 import { Box } from '@mui/material';
-import './App.css';
+import Home from './Home';
+import Navbar from './Navbar'; 
+import Navbar2 from './Navbar2';
+import About from './About';
+import Skill from './Skill/Skill';
+import TimeLine from './Experience';
+import Contact from './Contact'; 
+import { Route, Routes, useLocation } from 'react-router-dom';
 
-function AdminPannel() {
+export default function AdminPannel() {
+  const location = useLocation();
+  const isContactPage = location.pathname === "/contact"; // Check if on Contact page
+
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh'}}>
-      {/* Navbar */}
-      <Box>
-        <Navbar />
-      </Box>
+    <Box
+      sx={{
+        backgroundColor: '#213555', // Dark theme background
+        minHeight: '100vh', // Ensures full height coverage
+        width: '100%',  
+        height:'100%',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative',
+        color: '#F5EFE7', // Light text for contrast
+      }}
+    >
+      {/* Render Navbar2 on Contact Page, otherwise render Navbar */}
+      {isContactPage ? <Navbar2 /> : <Navbar />}
 
-      {/* Main Content Area */}
-      <Box sx={{ display: 'flex', flexGrow: 1 }}>
-        {/* Sidebar */}
-        <Sidebar />
-
-        {/* Content Area */}
-        <Box sx={{ width: '80%', padding: '20px' }}>
-          {/* Breadcrumb */}
-          <Breadcrumb />
-
-          {/* Dynamic Content */}
-          <Box sx={{ marginTop: '20px' }}>
-            <Routes>
-              <Route path="/dashboard" element={<Table />} />
-              <Route path="/StudentWise" element={<Table1 />} />
-              <Route path="/take-test" element={<Table2/>} />
-              <Route path="/plan-test" element={<div>Download Content</div>} />
-             <Route path="/StudentTopice" element={<StudentTopice />} />
-            </Routes>
-          </Box>
-        </Box>
-      </Box>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Box id="home" sx={{ minHeight: '100vh', backgroundColor: 'inherit' }}>
+              <Home />
+            </Box>
+            <Box id="about" sx={{ minHeight: '100vh', backgroundColor: 'inherit' }}>
+              <About />
+            </Box>
+            <Box id="skill" sx={{ minHeight: '100vh', backgroundColor: 'inherit' }}>
+              <Skill />
+            </Box>
+            <Box id="experience" sx={{ minHeight: '100vh', backgroundColor: 'inherit' }}>
+              <TimeLine />
+            </Box>
+          </>
+        } />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
     </Box>
   );
 }
-
-export default AdminPannel;
