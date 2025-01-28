@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Tushar/static/css/main.0a007433.css",
+    "main.js": "/Tushar/static/js/main.391d2972.js",
+    "static/media/User-removebg-preview.png": "/Tushar/static/media/User-removebg-preview.2863a3e7444bf69a6755.png",
+    "static/media/Html.png": "/Tushar/static/media/Html.7d671bf8eb6d350dd3e3.png",
+    "static/media/Node.png": "/Tushar/static/media/Node.1c5935c6ed46c315f258.png",
+    "static/media/JS.png": "/Tushar/static/media/JS.137582d528636ea56964.png",
+    "static/media/Gmail.png": "/Tushar/static/media/Gmail.63f2c7aa7cf7a070b7ee.png",
+    "static/media/React.png": "/Tushar/static/media/React.705b8c1fc8d6fa2ccbb4.png",
+    "static/media/css.png": "/Tushar/static/media/css.cd1d0f10481c9925de98.png",
+    "static/media/Mongo db.png": "/Tushar/static/media/Mongo db.f3faed6971ccd00e9a66.png",
+    "static/media/Rest Aoi.png": "/Tushar/static/media/Rest Aoi.6204004fbd6e114a433c.png",
+    "static/media/Linkdin.png": "/Tushar/static/media/Linkdin.6d3c09ed68bb41408ffd.png",
+    "static/media/Whatsapp.png": "/Tushar/static/media/Whatsapp.af7ae442a7754be7815b.png",
+    "static/media/Material Ui.png": "/Tushar/static/media/Material Ui.58877895ee915d169882.png",
+    "index.html": "/Tushar/index.html",
+    "main.0a007433.css.map": "/Tushar/static/css/main.0a007433.css.map",
+    "main.391d2972.js.map": "/Tushar/static/js/main.391d2972.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a007433.css",
+    "static/js/main.391d2972.js"
+  ]
+}
